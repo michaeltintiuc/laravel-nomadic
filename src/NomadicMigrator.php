@@ -1,16 +1,14 @@
 <?php
+
 namespace ChrisHalbert\LaravelNomadic;
 
-use Illuminate\Database\Migrations\Migrator;
-use ChrisHalbert\LaravelNomadic\NomadicRepositoryInterface;
-use ChrisHalbert\LaravelNomadic\NomadicMigration;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Database\ConnectionResolverInterface as Resolver;
 use Illuminate\Support\Str;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Database\Migrations\Migrator;
+use Illuminate\Database\ConnectionResolverInterface as Resolver;
 
 /**
- * Class NomadicMigrator
- * @package ChrisHalbert\LaravelNomadic
+ * Class NomadicMigrator.
  */
 class NomadicMigrator extends Migrator
 {
@@ -62,7 +60,7 @@ class NomadicMigrator extends Migrator
         $this->runMigration($migration, 'up');
 
         // For backwards compatability, files not created with Nomadic will still run normally
-        $properties = array();
+        $properties = [];
         if (method_exists($migration, 'getProperties')) {
             $properties = array_merge($properties, $migration->getProperties());
         }
@@ -85,7 +83,7 @@ class NomadicMigrator extends Migrator
         $class = Str::studly(implode('_', array_slice(explode('_', $file), 4)));
 
         // For backwards compatability
-        if (!is_subclass_of($class, NomadicMigration::class)) {
+        if (! is_subclass_of($class, NomadicMigration::class)) {
             return new $class;
         }
 

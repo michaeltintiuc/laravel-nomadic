@@ -5,8 +5,7 @@ namespace ChrisHalbert\LaravelNomadic;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class NomadicMigration
- * @package ChrisHalbert\LaravelNomadic
+ * Class NomadicMigration.
  */
 abstract class NomadicMigration extends Migration
 {
@@ -34,7 +33,7 @@ abstract class NomadicMigration extends Migration
      */
     public function __construct(NomadicRepositoryInterface $repository)
     {
-        $this->properties = array();
+        $this->properties = [];
         $this->repository = $repository;
         $this->fileName = basename((new \ReflectionClass($this))->getFileName(), '.php');
     }
@@ -61,6 +60,7 @@ abstract class NomadicMigration extends Migration
         if ($persist) {
             $this->syncWithDb();
         }
+
         return $this->properties[$key];
     }
 
@@ -74,7 +74,8 @@ abstract class NomadicMigration extends Migration
         if ($persist) {
             $this->syncWithDb();
         }
-            return $this->properties;
+
+        return $this->properties;
     }
 
     /**

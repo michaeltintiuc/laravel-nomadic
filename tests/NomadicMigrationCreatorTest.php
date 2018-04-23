@@ -15,7 +15,7 @@ class NomadicMigrationCreatorTest extends \PHPUnit_Framework_TestCase
 
     public function testGetStubPathMethods()
     {
-        $path = dirname(dirname(__FILE__)) . '/src/stubs';
+        $path = dirname(dirname(__FILE__)).'/src/stubs';
         $this->assertEquals($path, $this->creator->stubPath());
     }
 

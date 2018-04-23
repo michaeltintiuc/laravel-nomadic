@@ -4,10 +4,9 @@ namespace ChrisHalbert\LaravelNomadic;
 
 use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
-use Illuminate\Contracts\Console\Application;
-use Illuminate\Database\ConnectionResolver;
 use Illuminate\Filesystem\Filesystem;
 use SebastianBergmann\PeekAndPoke\Proxy;
+use Illuminate\Database\ConnectionResolver;
 
 class NomadicServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
@@ -35,10 +34,11 @@ class NomadicServiceProviderTest extends \PHPUnit_Framework_TestCase
 
     public function testBoot()
     {
-        function config_path() {
+        function config_path()
+        {
             return 'some/path';
         }
-        $dir = dirname(dirname(__FILE__)) . '/src/nomadic.php';
+        $dir = dirname(dirname(__FILE__)).'/src/nomadic.php';
         $this->serviceProvider->expects($this->once())
             ->method('publishes')
             ->with([$dir => 'some/path']);

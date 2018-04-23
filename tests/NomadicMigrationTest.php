@@ -51,7 +51,7 @@ class NomadicMigrationTest extends \PHPUnit_Framework_TestCase
         return [
             'migration' => '2018_04_21_Migration',
             'batch' => 1,
-            'author' => 'DB Chris'
+            'author' => 'DB Chris',
         ];
     }
 }

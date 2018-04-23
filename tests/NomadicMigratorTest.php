@@ -2,12 +2,10 @@
 
 namespace ChrisHalbert\LaravelNomadic;
 
-use Illuminate\Database\ConnectionResolver;
 use Illuminate\Filesystem\Filesystem;
-use ChrisHalbert\LaravelNomadic\DatabaseNomadicRepository;
-use Illuminate\Database\Migrations\Migration;
-use ChrisHalbert\LaravelNomadic\NomadicMigration;
 use SebastianBergmann\PeekAndPoke\Proxy;
+use Illuminate\Database\ConnectionResolver;
+use Illuminate\Database\Migrations\Migration;
 
 class NomadicMigratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,8 +19,9 @@ class NomadicMigratorTest extends \PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        function app() {
-            return new DatabaseNomadicRepository(NomadicMigratorTest::$resolver, '');
+        function app()
+        {
+            return new DatabaseNomadicRepository(self::$resolver, '');
         }
     }
 
@@ -52,14 +51,14 @@ class NomadicMigratorTest extends \PHPUnit_Framework_TestCase
     public function testResolveReturnsNomadicMigration()
     {
         $fileName = '2018_04_04_000000_NomadicMockMigration';
-        require_once __DIR__ . "/files/$fileName.php";
+        require_once __DIR__."/files/$fileName.php";
         $this->assertInstanceOf(NomadicMigration::class, $this->migrator->resolve($fileName));
     }
 
     public function testResolveReturnsStockMigration()
     {
-        $fileName = "2018_04_04_000000_StandardMigration";
-        require_once __DIR__ . "/files/$fileName.php";
+        $fileName = '2018_04_04_000000_StandardMigration';
+        require_once __DIR__."/files/$fileName.php";
         $this->assertInstanceOf(Migration::class, $test = $this->migrator->resolve($fileName));
     }
 
@@ -82,7 +81,7 @@ class NomadicMigratorTest extends \PHPUnit_Framework_TestCase
 
         $this->repository->expects($this->once())
             ->method('log')
-            ->with('2018_04_04_000000_NomadicMockMigration', 1,['property' => 'value']);
+            ->with('2018_04_04_000000_NomadicMockMigration', 1, ['property' => 'value']);
 
         $this->migrator->runUp('2018_04_04_000000_NomadicMockMigration', 1, false);
     }

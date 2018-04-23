@@ -4,7 +4,8 @@ namespace ChrisHalbert\LaravelNomadic;
 
 use Illuminate\Support\Collection;
 
-function config() {
+function config()
+{
     return ['name', 'date'];
 }
 
@@ -15,7 +16,7 @@ class DatabaseNomadicRepositoryTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->repo = $this->getMockBuilder(DatabaseNomadicRepository::class)
-            ->setMethods(array('table'))
+            ->setMethods(['table'])
             ->disableOriginalConstructor()
             ->getMock();
     }
@@ -70,6 +71,6 @@ class DatabaseNomadicRepositoryTest extends \PHPUnit_Framework_TestCase
 
     protected function getMockData()
     {
-        return array('name' => 'Chris', 'date' => '2018-10-10');
+        return ['name' => 'Chris', 'date' => '2018-10-10'];
     }
 }

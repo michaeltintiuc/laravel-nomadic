@@ -5,8 +5,7 @@ namespace ChrisHalbert\LaravelNomadic;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
 
 /**
- * Class DatabaseNomadicRepository
- * @package ChrisHalbert\LaravelNomadic
+ * Class DatabaseNomadicRepository.
  */
 class DatabaseNomadicRepository extends DatabaseMigrationRepository implements NomadicRepositoryInterface
 {
@@ -28,7 +27,7 @@ class DatabaseNomadicRepository extends DatabaseMigrationRepository implements N
             return in_array($i, $schema);
         }, ARRAY_FILTER_USE_KEY);
 
-        $record = array('migration' => $file, 'batch' => $batch);
+        $record = ['migration' => $file, 'batch' => $batch];
         $record = array_merge($record, $params);
 
         $this->table()->insert($record);
@@ -45,6 +44,7 @@ class DatabaseNomadicRepository extends DatabaseMigrationRepository implements N
         if (is_object($existingMigration)) {
             return get_object_vars($existingMigration);
         }
+
         return [];
     }
 }

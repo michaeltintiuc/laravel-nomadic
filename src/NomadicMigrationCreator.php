@@ -5,8 +5,7 @@ namespace ChrisHalbert\LaravelNomadic;
 use Illuminate\Database\Migrations\MigrationCreator;
 
 /**
- * Class NomadicMigrationCreator
- * @package ChrisHalbert\LaravelNomadic
+ * Class NomadicMigrationCreator.
  */
 class NomadicMigrationCreator extends MigrationCreator
 {
@@ -16,7 +15,7 @@ class NomadicMigrationCreator extends MigrationCreator
      */
     public function getStubPath()
     {
-        return __DIR__ . '/stubs';
+        return __DIR__.'/stubs';
     }
 
     /**

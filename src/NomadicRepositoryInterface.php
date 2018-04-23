@@ -5,8 +5,7 @@ namespace ChrisHalbert\LaravelNomadic;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 
 /**
- * Interface NomadicRepositoryInterface
- * @package ChrisHalbert\LaravelNomadic
+ * Interface NomadicRepositoryInterface.
  */
 interface NomadicRepositoryInterface extends MigrationRepositoryInterface
 {
@@ -17,7 +16,7 @@ interface NomadicRepositoryInterface extends MigrationRepositoryInterface
      * @param array  $params Additional properties.
      * @return void
      */
-    public function log($file, $batch, $params = array());
+    public function log($file, $batch, $params = []);
 
     /**
      * Get all the properties.
